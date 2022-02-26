@@ -60,3 +60,13 @@ class Claim(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Кто жаловался')
     flat = models.ForeignKey(Flat, on_delete=models.PROTECT, verbose_name='Квартира, на которую пожаловались')
     text = models.TextField('Текст жалобы')
+
+    def __str__(self):
+        return f'{self.user}, {self.flat}'
+
+
+class Owner(models.Model):
+    owner = models.CharField('ФИО владельца', max_length=200)
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца',blank=True)
+    owned_flat= models.ManyToManyField(Flat, related_name="owned_flats", verbose_name='Квартиры в собственности:')
