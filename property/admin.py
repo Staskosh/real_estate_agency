@@ -8,6 +8,7 @@ class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'address', 'owner']
     readonly_fields = ['created_at']
     list_filter = ['new_building', 'town']
+    raw_id_fields = ['liked_by']
 
 class ClaimAdmin(admin.ModelAdmin):
     raw_id_fields = ['user', 'flat']
