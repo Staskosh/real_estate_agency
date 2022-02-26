@@ -11,13 +11,24 @@ def format_price(value):
         return None
 
 
+
+
+
+
 def show_flats(request):
     town = request.GET.get('town')
     min_price = format_price(request.GET.get('min_price'))
     max_price = format_price(request.GET.get('max_price'))
     new_building = request.GET.get('new_building') == '1'
 
+
     flats = Flat.objects.all()
+    for flat in flats:
+        parsed_number = phonenumbers.parse(flat.owners_phonenumber, 'RU')
+        formated_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
+        print(formated_number)
+        # flat.owner_pure_phone = formated_number
+        # flat.owner_pure_phone
     if new_building:
         flats = flats.filter(new_building=new_building)
     if town:
