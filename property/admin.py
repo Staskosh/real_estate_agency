@@ -18,6 +18,7 @@ class ClaimAdmin(admin.ModelAdmin):
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ['owned_flat']
+    search_fields = ['owner']
 
 
 admin.site.register(Flat, FlatAdmin)

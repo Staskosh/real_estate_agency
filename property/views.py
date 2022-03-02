@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-from property.models import Flat
+from property.models import Flat, Owner
 
 
 def format_price(value):
@@ -22,6 +22,7 @@ def show_flats(request):
     new_building = request.GET.get('new_building') == '1'
 
     flats = Flat.objects.all()
+
     if new_building:
         flats = flats.filter(new_building=new_building)
     if town:
