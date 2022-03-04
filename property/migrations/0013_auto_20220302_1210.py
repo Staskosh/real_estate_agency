@@ -8,7 +8,6 @@ def fill_owner_flats(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     for owner in Owner.objects.all():
         flats = Flat.objects.filter(owner=owner.owner)
-        print(owner.owner)
         owner.owned_flat.set(flats)
 
 class Migration(migrations.Migration):

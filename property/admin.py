@@ -15,6 +15,7 @@ class FlatAdmin(admin.ModelAdmin):
 class ClaimAdmin(admin.ModelAdmin):
     raw_id_fields = ['user', 'flat']
 
+
 class Owned_flatInline(admin.TabularInline):
     raw_id_fields = ['owner', 'flat']
     model = Flat.owned_flats.through
@@ -22,14 +23,8 @@ class Owned_flatInline(admin.TabularInline):
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ['owned_flat']
-    # list_display = ('display_flats',)
     search_fields = ['owner']
     inlines = [Owned_flatInline]
-
-    # def display_flats(self):
-    #     return ', '.join([flat.owner for flat in self.owned_flats.all()])
-    #
-    # display_flats.short_description = 'Flats'
 
 
 admin.site.register(Flat, FlatAdmin)
