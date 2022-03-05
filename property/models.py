@@ -48,7 +48,7 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    new_building = models.NullBooleanField(verbose_name='Квартиры с годом постройки не младше 2015 года.')
+    new_building = models.NullBooleanField(verbose_name='Квартиры с годом постройки не младше 2015 года.', db_index=True)
     liked_by = models.ManyToManyField(User, related_name="liked_flats", verbose_name='Кто лайкнул:')
     owner_pure_phone = PhoneNumberField(blank=True)
 
