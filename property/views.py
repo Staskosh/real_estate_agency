@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-from property.models import Flat, Owner
+from property.models import Flat
 
 
 def format_price(value):
@@ -9,10 +9,6 @@ def format_price(value):
         return int(value)
     except (TypeError, ValueError):
         return None
-
-
-
-
 
 
 def show_flats(request):
